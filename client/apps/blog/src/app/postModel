@@ -1,0 +1,14 @@
+
+
+export class postModel {
+    id: string
+    title: string
+    channel_id : string
+    textContent : string  
+
+    constructor(title, channel_id, textContent){
+        this.title = title
+        this.textContent = textContent
+        this.channel_id = channel_id
+    }
+}
