@@ -30,8 +30,8 @@ export class authService {
     }
     // This is the method for the application
     create_user(newUserForm : FormGroup){
-        let passwordValue = newUserForm.get('password')?.value;
-        let confirmPassword = newUserForm.get('confirm_password')?.value;
+        const passwordValue = newUserForm.get('password')?.value;
+        const confirmPassword = newUserForm.get('confirm_password')?.value;
         if(passwordValue !== confirmPassword){
             return false;
         }
