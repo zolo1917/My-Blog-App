@@ -20,9 +20,9 @@ async def get_users(db: Session = Depends(get_db)):
     return db.query(Users).all()
 
 
-@router.get("/getusersByUsername/{id}")
-async def get_user_by_id(username: str, db: Session = Depends(get_db)):
-    return db.query(username).filter(username == Users.usename).first()
+@router.get("/getusersByUsername/{username}")
+async def get_user_by_id(usename: str, db: Session = Depends(get_db)):
+    return db.query(Users).filter(usename == Users.username).first()
 
 
 @router.post("/createuser")
@@ -59,7 +59,7 @@ def transform_user_model_to_user(userModel: UserModel):
     user.last_name = userModel.last_name
     user.first_name = userModel.first_name
     user.is_active = userModel.is_active
-    user.usename = userModel.username
+    user.username = userModel.username
     if userModel.id:
         user.id = userModel.id
     if userModel.created_date:
@@ -72,5 +72,5 @@ def transform_user_model_to_user(userModel: UserModel):
 def validate_user_model(user_model: UserModel):
     if (user_model.username is None or user_model.username is "") \
             or (user_model.password is None or user_model.password is ""):
-        raise HTTPException(status_code=500, detail="Invalid Username or Password")
-
+        raise HTTPException(
+            status_code=500, detail="Invalid Username or Password")

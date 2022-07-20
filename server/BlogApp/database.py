@@ -4,9 +4,9 @@ from sqlalchemy.orm import sessionmaker
 
 user = 'root'
 password = 'root'
-host = '34.100.176.46'
+host = 'localhost'
 port = 3306
-database = 'blog_app'
+database = 'blog_local'
 
 SQLALCHEMY_DATABASE_URL = f"mysql+pymysql://{user}:{password}@{host}:{port}/{database}"
 

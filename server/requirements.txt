@@ -15,7 +15,6 @@ fastapi==0.75.1
 filelock==3.6.0
 greenlet==1.1.2
 h11==0.13.0
-httptools==0.2.0
 idna==3.3
 itsdangerous==2.1.2
 Jinja2==3.1.1

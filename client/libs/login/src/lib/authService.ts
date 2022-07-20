@@ -9,15 +9,21 @@ export class authService {
     constructor(private httpClient : HttpClient){
     }
 
+    private setHeaders(){
+      const header = new Headers();
+      header.append('Content-Type', 'application/json')
+      header.append('token', <string>localStorage.getItem('token'))
+      return header
+    }
+
     login(username: string, password : string){
-        let request : FormData;
-        request = new FormData()
+        const request : FormData =new FormData();
         request.append('username', username)
         request.append('password', password)
         let response : any;
-        this.httpClient.post("http://localhost:8000/login", request).subscribe(data => {
-            console.log(data)
-            response = data
+        this.httpClient.post("http://localhost:8000/login", request).subscribe((response) => {
+            localStorage.setItem('token', response.toString());
+            console.log(localStorage.getItem('token'))
         })
         console.log(response)
         return response
@@ -29,7 +35,7 @@ export class authService {
         if(passwordValue !== confirmPassword){
             return false;
         }
-        let request = {
+        const request = {
             'username' : newUserForm.get('username')?.value,
             'password' : newUserForm.get('password')?.value,
             'first_name': newUserForm.get('firstName')?.value,

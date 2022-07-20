@@ -9,7 +9,7 @@ from BlogApp.database import Base
 class Channels(Base):
     __tablename__ = "channels"
 
-    id = Column(BigInteger, primary_key=True, index=True)
+    id = Column(BigInteger, primary_key=True, index=True, autoincrement=True)
     title = Column(String(100), unique=True)
     descriptions = Column(String(10000))
     created_date = Column(Date, default=date.today())

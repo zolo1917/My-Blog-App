@@ -30,14 +30,15 @@ def verify_password(password: str, hashed_password):
 
 def get_current_user(token: str = Depends(OAuth2PasswordBearer)):
     try:
-        payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
+        payload = jwt.decode(token, SECRET_KEY, algorithms=ALGORITHM)
         username: str = payload.get("sub")
         user_id: int = payload.get("id")
         if username is None or user_id is None:
             raise HTTPException(status_code=404, detail="user now found")
         return {"username": username, "user_id": user_id}
     except JWTError:
-        raise HTTPException(status_code=500, detail="error while decoding token")
+        raise HTTPException(
+            status_code=500, detail="error while decoding token")
 
 
 def create_jwt_token(username: str,
@@ -49,12 +50,13 @@ def create_jwt_token(username: str,
     else:
         expire = datetime.utcnow() + timedelta(minutes=15)
     encode.update({"exp": expire})
-    return jwt.encode(encode, SECRET_KEY, algorithm=[ALGORITHM])
+    return jwt.encode(encode, SECRET_KEY, algorithm=ALGORITHM)
 
 
-@router.post("/token")
+@router.post("/login")
 async def login(form_data: OAuth2PasswordRequestForm = Depends(), db: Session = Depends(get_db)):
-    user: Users() = db.query(Users).filter(Users.usename == form_data.username).first()
+    user: Users() = db.query(Users).filter(
+        Users.username == form_data.username).first()
     if not user:
         raise HTTPException(status_code=404, detail="User not found")
     if not verify_password(form_data.password, user.encrypted_password):
@@ -62,13 +64,19 @@ async def login(form_data: OAuth2PasswordRequestForm = Depends(), db: Session = 
 
     # create the JWT token for the user
     token_expire = timedelta(minutes=20)
-    token = create_jwt_token(user.usename, user.id, expires_delta=token_expire)
-    return {"token": token}
+    token = create_jwt_token(user.username, user.id,
+                             expires_delta=token_expire)
+    return token
 
 
 @router.get("/logout")
 async def logout():
     pass
+
+
+@router.get("/checkTokenValidity")
+async def checkTokenValidity(token: str):
+    return get_current_user(token)
 
 
 # Exception definations
