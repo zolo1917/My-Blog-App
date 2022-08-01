@@ -1,7 +1,6 @@
 import { FormGroup } from '@angular/forms';
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { throwError } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class authService {
@@ -23,7 +22,7 @@ export class authService {
         let response : any;
         this.httpClient.post("http://localhost:8000/login", request).subscribe((response) => {
             localStorage.setItem('token', response.toString());
-            console.log(localStorage.getItem('token'))
+            console.log(localStorage.getItem('token'));
         })
         console.log(response)
         return response
