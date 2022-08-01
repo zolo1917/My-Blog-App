@@ -26,6 +26,11 @@ app.include_router(UserController.router, tags=["Users"])
 app.include_router(ChannelController.router, tags=["Channels"])
 app.include_router(AuthController.router, tags=["Auth"])
 
+
+@app.get("/")
+async def mainPage():
+    return {"message": "this Application is up"}
+
 if __name__ == '__main__':
     print("this is a test console log")
     print("starting the Blog App")
