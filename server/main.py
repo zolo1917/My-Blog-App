@@ -34,3 +34,4 @@ async def mainPage():
 if __name__ == '__main__':
     print("this is a test console log")
     print("starting the Blog App")
+    print("adding a new start comment")
