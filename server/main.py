@@ -5,15 +5,19 @@
 '''
 from fastapi import FastAPI
 from starlette.middleware.cors import CORSMiddleware
+from dotenv import load_dotenv
+
 
 from BlogApp.Controllers import PostController, UserController, ChannelController, AuthController
 import BlogApp.database as db
 
 app = FastAPI()
 
+load_dotenv()
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:4200"],
+    allow_origins=["http://zolo1917.online"],
     allow_methods=["*"],
     allow_headers=["*"]
 
