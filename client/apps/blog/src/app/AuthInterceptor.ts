@@ -16,17 +16,19 @@ export class authInterceptor implements HttpInterceptor{
   }
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const headers = req.headers;
-    headers.append("BearerToken", <string>localStorage.getItem('token'));
-    // updating the request parameters to add the authorization token
-    const updatedRequest = req.clone({
-      setHeaders: {
-        Authorization : `Bearer ${localStorage.getItem('token')}`,
-        Content : 'Applicaiton/json'
-      }
-    });
-    updatedRequest
+    if(localStorage.getItem('token')){
+      headers.append("BearerToken", <string>localStorage.getItem('token'));
+      // updating the request parameters to add the authorization token
+      const updatedRequest = req.clone({
+        setHeaders: {
+          Authorization : `Bearer ${localStorage.getItem('token')}`,
+          Content : 'Applicaiton/json'
+        }
+      });
+      console.log("Before making api call : ", updatedRequest);
+    }
+
     //logging the updated Parameters to browser's console
-    console.log("Before making api call : ", updatedRequest);
     return next.handle(req).pipe(tap(event =>{
       if(event instanceof HttpResponse){
         console.log("API call success: ", event)

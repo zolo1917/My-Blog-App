@@ -28,13 +28,12 @@ export class LoginFormComponent implements OnInit {
   }
 
   login() {
-    let output = this.auth.login(this.loginForm.get('username')?.value, this.loginForm.get('password')?.value);
-    console.log(output)
+    const output = this.auth.login(this.loginForm.get('username')?.value, this.loginForm.get('password')?.value);
     this.dialogRef.close()
   }
 
   closeDialog(){
     this.dialogRef.close()
   }
-  
+
 }

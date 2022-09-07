@@ -6,7 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./create-edit-channel.component.scss'],
 })
 export class CreateEditChannelComponent implements OnInit {
-  constructor() {}
+  constructor() {
+    // testing initial code
+  }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log("Create Edit channel component INit")
+  }
 }

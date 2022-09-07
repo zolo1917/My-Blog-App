@@ -4,6 +4,7 @@
 
 export const environment = {
   production: false,
+  serviceURL: 'https://polar-dawn-19784.herokuapp.com'
 };
 
 /*

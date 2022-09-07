@@ -71,6 +71,7 @@ async def login(form_data: OAuth2PasswordRequestForm = Depends(), db: Session = 
 
 @router.get("/logout")
 async def logout():
+    # write code for the logout application
     pass
 
 

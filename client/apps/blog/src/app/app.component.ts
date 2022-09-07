@@ -1,3 +1,5 @@
+import { CreateEditPostsComponent } from './../../../../libs/posts/src/lib/create-edit-posts/create-edit-posts.component';
+import { CreateEditChannelComponent } from './../../../../libs/channels/src/lib/create-edit-channel/create-edit-channel.component';
 
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
@@ -37,37 +39,37 @@ export class AppComponent implements OnInit{
   ]
 
   posts = [{
-    id : 1, 
+    id : 1,
     title : "Post 1",
     textContent : "This is the content of the post 1"
   },
   {
-    id : 2, 
+    id : 2,
     title : "Post 2",
     textContent : "This is the content of the post 2"
   },
   {
-    id : 3, 
+    id : 3,
     title : "Post 3",
     textContent : "This is the content of the post 3"
   },
   {
-    id : 4, 
+    id : 4,
     title : "Post 4",
     textContent : "This is the content of the post 4"
   },
   {
-    id : 5, 
+    id : 5,
     title : "Post 5",
     textContent : "This is the content of the post 5"
   },
   {
-    id : 6, 
+    id : 6,
     title : "Post 6",
     textContent : "This is the content of the post 6"
   }
 ]
-  
+
   constructor(public dialog : MatDialog){}
 
   login(){
@@ -79,11 +81,18 @@ export class AppComponent implements OnInit{
   }
 
   signUp(){
-    const dialogRef = this.dialog.open(SignupFormComponent, {width : '80%', height:'auto'}) 
+    const dialogRef = this.dialog.open(SignupFormComponent, {width : '80%', height:'auto'})
     dialogRef.afterClosed().subscribe(result =>{
       console.log('The sign up form is closed')
       this.token = result
     })
+  }
+
+  createPost() {
+    const dailogRef = this.dialog.open(CreateEditPostsComponent, {width: '80', height: 'auto'})
+      dailogRef.afterClosed().subscribe(result => {
+        console.log("New post is created");
+      })
   }
 
   ngOnInit(): void {

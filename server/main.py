@@ -17,7 +17,7 @@ load_dotenv()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://zolo1917.online"],
+    allow_origins=["http://zolo1917.online", "http://www.zolo1917.online"],
     allow_methods=["*"],
     allow_headers=["*"]
 

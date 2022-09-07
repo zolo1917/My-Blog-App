@@ -1,10 +1,11 @@
+import { environment } from './../../../../apps/blog/src/environments/environment';
 import { FormGroup } from '@angular/forms';
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 
 @Injectable({ providedIn: 'root' })
 export class authService {
-
+    private serviceURL: string  = environment.serviceURL;
     constructor(private httpClient : HttpClient){
     }
 
@@ -15,12 +16,13 @@ export class authService {
       return header
     }
 
-    login(username: string, password : string){
-        const request : FormData =new FormData();
-        request.append('username', username)
-        request.append('password', password)
+    login(username: any, password : any){
+        let request : any = {};
+        request+=('username:'+ username)
+        request.append('password:'+ password)
+        console.log( "This is the request object" + request.toString())
         let response : any;
-        this.httpClient.post("http://localhost:8000/login", request).subscribe((response) => {
+        this.httpClient.post(this.serviceURL +"/auth/login", request).subscribe((response) => {
             localStorage.setItem('token', response.toString());
             console.log(localStorage.getItem('token'));
         })
