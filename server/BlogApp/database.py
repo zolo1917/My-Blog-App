@@ -17,7 +17,6 @@ database = env.get("db_local_database")
 
 SQLALCHEMY_DATABASE_URL = f"mysql+pymysql://{user}:{password}@{host}:{port}/{database}"
 
-print(SQLALCHEMY_DATABASE_URL)
 
 engine = create_engine(
     SQLALCHEMY_DATABASE_URL, echo=True
