@@ -1,1 +1,59 @@
-<blog-app-ui-nx-welcome></blog-app-ui-nx-welcome>
+<!-- 
+  ok so to start with we will be designing the page here will all the respective CSS and the animation functionality
+
+  then split it up into multiple components as an when the application comes into its own
+  ok first things first we will need a nav bar
+  lets see how we do it.
+ -->
+<div fxLayout="column" fxLayoutGap="10" fxLayoutAlign="center stretch">
+  <mat-toolbar>
+    <mat-toolbar-row
+      fxLayout="row"
+      fxLayoutAlign="space-between center"
+      fxLayoutGap="20"
+      color="primary"
+    >
+      <div>
+        <span>Zolo-Blog</span>
+      </div>
+      <div>
+        <button color="accent" mat-raised-button>Login</button>
+      </div>
+    </mat-toolbar-row>
+    <mat-toolbar-row fxLayout="row" fxLayoutAlign="center stretch">
+      <mat-tab-group>
+        <mat-tab label="Home"></mat-tab>
+        <mat-tab label="Blog Posts"></mat-tab>
+        <mat-tab label="About"></mat-tab>
+      </mat-tab-group>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  <div fxLayout="row" fxLayoutGap="20" fxLayoutAlign="start stretch">
+    <div fxFlex="70" fxLayout="column" fxLayoutAlign="center stretch">
+      <mat-card fxLayout="column" fxLayoutAlign="stretch stretch">
+        <mat-card-header>
+          <mat-card-title>Title</mat-card-title>
+          <mat-card-subtitle>Subtitle</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content> Text content </mat-card-content>
+        <mat-card-actions align="start">
+          <button mat-button>Action1</button>
+        </mat-card-actions>
+        <mat-card-footer> Footer </mat-card-footer>
+      </mat-card>
+    </div>
+    <div fxFlex>
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Title</mat-card-title>
+          <mat-card-subtitle>Subtitle</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content> Text content </mat-card-content>
+        <mat-card-actions align="start">
+          <button mat-button>Action1</button>
+        </mat-card-actions>
+        <mat-card-footer> Footer </mat-card-footer>
+      </mat-card>
+    </div>
+  </div>
+</div>

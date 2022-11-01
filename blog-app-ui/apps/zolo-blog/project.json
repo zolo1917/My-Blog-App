@@ -7,7 +7,9 @@
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "outputPath": "dist/apps/zolo-blog",
         "index": "apps/zolo-blog/src/index.html",
@@ -19,7 +21,10 @@
           "apps/zolo-blog/src/favicon.ico",
           "apps/zolo-blog/src/assets"
         ],
-        "styles": ["apps/zolo-blog/src/styles.scss"],
+        "styles": [
+          "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+          "apps/zolo-blog/src/styles.scss"
+        ],
         "scripts": []
       },
       "configurations": {
@@ -84,7 +89,9 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/apps/zolo-blog"],
+      "outputs": [
+        "coverage/apps/zolo-blog"
+      ],
       "options": {
         "jestConfig": "apps/zolo-blog/jest.config.ts",
         "passWithNoTests": true
