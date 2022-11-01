@@ -5,7 +5,12 @@
   ok first things first we will need a nav bar
   lets see how we do it.
  -->
-<div fxLayout="column" fxLayoutGap="10" fxLayoutAlign="center stretch">
+<div
+  class="bg-black"
+  fxLayout="column"
+  fxLayoutGap="10"
+  fxLayoutAlign="center stretch"
+>
   <mat-toolbar>
     <mat-toolbar-row
       fxLayout="row"
@@ -28,31 +33,45 @@
       </mat-tab-group>
     </mat-toolbar-row>
   </mat-toolbar>
-  <div fxLayout="row" fxLayoutGap="20" fxLayoutAlign="start stretch">
-    <div fxFlex="70" fxLayout="column" fxLayoutAlign="center stretch">
+  <div fxLayout="row" fxLayoutGap="5" fxLayoutAlign="space-around stretch">
+    <div
+      fxFlex="60"
+      fxLayoutGap="5"
+      fxLayout="column"
+      fxLayoutAlign="center stretch"
+    >
       <mat-card fxLayout="column" fxLayoutAlign="stretch stretch">
         <mat-card-header>
-          <mat-card-title>Title</mat-card-title>
-          <mat-card-subtitle>Subtitle</mat-card-subtitle>
+          <mat-card-title>Post 1</mat-card-title>
+          <mat-card-subtitle>Subject Data</mat-card-subtitle>
         </mat-card-header>
-        <mat-card-content> Text content </mat-card-content>
-        <mat-card-actions align="start">
-          <button mat-button>Action1</button>
-        </mat-card-actions>
-        <mat-card-footer> Footer </mat-card-footer>
+        <mat-card-content>
+          this is a content and context that needs to be styled
+        </mat-card-content>
+      </mat-card>
+      <mat-card fxLayout="column" fxLayoutAlign="stretch stretch">
+        <mat-card-header>
+          <mat-card-title>Post 2</mat-card-title>
+          <mat-card-subtitle>Subject Data for post 2</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          this is a content and context that needs to be styled and changed
+        </mat-card-content>
       </mat-card>
     </div>
-    <div fxFlex>
+    <div fxFlex="35" fxLayout="column" fxLayoutAlign="start stretch">
       <mat-card>
         <mat-card-header>
-          <mat-card-title>Title</mat-card-title>
-          <mat-card-subtitle>Subtitle</mat-card-subtitle>
+          <mat-card-title>Zolo1917</mat-card-title>
+          <mat-card-subtitle>Developer</mat-card-subtitle>
         </mat-card-header>
-        <mat-card-content> Text content </mat-card-content>
-        <mat-card-actions align="start">
-          <button mat-button>Action1</button>
+        <mat-card-content align="start">
+          I am an learning developer and would be documenting my learning
+          process on to this site
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-raised-button color="primary">Action1</button>
         </mat-card-actions>
-        <mat-card-footer> Footer </mat-card-footer>
       </mat-card>
     </div>
   </div>
